@@ -5,4 +5,4 @@ EXPOSE 8088
 COPY target/$APP_FILE $APP_HOME/
 WORKDIR $APP_HOME
 ENTRYPOINT ["sh", "-c"]
-CMD ["exec java -jar $APP_FILE"]
+CMD ["exec java -Dspring.profiles.active=native -jar $APP_FILE"]
