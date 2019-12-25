@@ -4,4 +4,4 @@ EXPOSE 8080
 COPY target/*.jar $APP_HOME/
 WORKDIR $APP_HOME
 ENTRYPOINT ["sh", "-c"]
-CMD ["exec java -Dspring.profiles.active=native -jar $APP_HOME/*.jar"]
+CMD ["exec java $JAVA_OPTS -Dspring.profiles.active=native -jar $APP_HOME/*.jar"]

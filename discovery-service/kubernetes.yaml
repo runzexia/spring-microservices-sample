@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-sample
+  labels:
+    app: eureka-sample
+spec:
+  type: NodePort
+  clusterIP: None
+  ports:
+  - port: 8080
+    name: eureka-sample
+  selector:
+    app: eureka-sample
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: eureka-sample
+spec:
+  serviceName: 'eureka-sample'
+  # n instances
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eureka-sample
+  template:
+    metadata:
+      labels:
+        app: eureka-sample
+    spec:
+      containers:
+      - name: eureka-sample
+        image: runzexia/eureka-sample:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "1200Mi"
+            cpu: "500m"
+        env:
+        - name: JAVA_OPTS
+          value: "-Xms1g -Xmx1g"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
