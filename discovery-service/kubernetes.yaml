@@ -63,14 +63,14 @@ spec:
               value: "http://config-sample:8080"
           livenessProbe:
             httpGet:
-              path: /
+              path: /actuator/health
               port: 8761
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
-              path: /
+              path: /actuator/health
               port: 8761
             initialDelaySeconds: 30
             periodSeconds: 10

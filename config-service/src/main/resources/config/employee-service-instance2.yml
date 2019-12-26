@@ -5,7 +5,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_SERVER:http://127.0.0.1:8761/eureka/}
-
+  instance:
+    prefer-ip-address: true
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
