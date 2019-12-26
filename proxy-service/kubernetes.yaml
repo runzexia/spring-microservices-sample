@@ -40,6 +40,7 @@ spec:
             timeoutSeconds: 10
             failureThreshold: 30
             periodSeconds: 5
+            initialDelaySeconds: 360
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -47,6 +48,7 @@ spec:
             timeoutSeconds: 10
             failureThreshold: 30
             periodSeconds: 5
+            initialDelaySeconds: 360
           env:
             - name: PORT
               value: "8080"
