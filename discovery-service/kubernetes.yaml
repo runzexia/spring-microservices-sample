@@ -20,6 +20,7 @@ metadata:
   namespace: kubesphere-springcloud-sample
 spec:
   serviceName: 'eureka-sample'
+  podManagementPolicy: Parallel
   # n instances
   replicas: 3
   selector:
@@ -75,4 +76,3 @@ spec:
             initialDelaySeconds: 180
             periodSeconds: 10
             timeoutSeconds: 5
-      podManagementPolicy: Parallel
