@@ -12,13 +12,6 @@ pipeline {
     }
 
     stages {
-        stage ('checkout scm') {
-            steps {
-                checkout(scm)
-            }
-        }
-
-
         stage ('build') {
             steps {
                 container ('maven') {
