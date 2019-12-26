@@ -8,12 +8,12 @@ eureka:
     registry-fetch-interval-seconds: 30
     fetch-registry: false
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://127.0.0.1:${server.port}/eureka/}
+      defaultZone: ${EUREKA_SERVER:http://localhost:${server.port}/eureka/}
   instance:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 15
-    instance-id: ${EUREKA_INSTANCE_HOSTNAME:${spring.application.name}}:${server.port}@${random.long(1000000,9999999)}
-    hostname: ${EUREKA_INSTANCE_HOSTNAME:${spring.application.name}}
+    instance-id: ${EUREKA_INSTANCE_HOSTNAME:localhost}:${server.port}@${random.long(1000000,9999999)}
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
 
 management:
   endpoints:
