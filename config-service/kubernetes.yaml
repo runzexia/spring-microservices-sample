@@ -40,6 +40,9 @@ spec:
             timeoutSeconds: 10
             failureThreshold: 30
             periodSeconds: 5
+          env:
+            - name: PORT
+              value: "8080"
           imagePullPolicy: Always
           name: config-sample
           ports:

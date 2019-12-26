@@ -7,7 +7,6 @@ metadata:
     app: eureka-sample
 spec:
   type: NodePort
-  clusterIP: None
   ports:
   - port: 8761
     name: eureka-sample
@@ -57,20 +56,22 @@ spec:
                 -XX:+UseCompressedOops
                 -XX:+OptimizeStringConcat
             - name: EUREKA_SERVER
-              value: "http://eureka-0.eureka-sample:8761/eureka/,http://eureka-1.eureka-sample:8761/eureka/,http://eureka-2.eureka-sample:8761/eureka/"
+              value: "http://eureka-sample-0.eureka-sample:8761/eureka/,http://eureka-sample-1.eureka-sample:8761/eureka/,http://eureka-sample-2.eureka-sample:8761/eureka/"
             - name: EUREKA_INSTANCE_HOSTNAME
               value: ${MY_POD_NAME}.eureka-sample
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8761
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8761
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
+            - name: CONFIG_SERVER
+              value: "http://config-sample:8080"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8761
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8761
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
