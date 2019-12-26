@@ -2,13 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: eureka-sample
+  namespace: kubesphere-springcloud-sample
   labels:
     app: eureka-sample
 spec:
   type: NodePort
   clusterIP: None
   ports:
-  - port: 8080
+  - port: 8761
     name: eureka-sample
   selector:
     app: eureka-sample
@@ -17,6 +18,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: eureka-sample
+  namespace: kubesphere-springcloud-sample
 spec:
   serviceName: 'eureka-sample'
   # n instances
@@ -30,31 +32,45 @@ spec:
         app: eureka-sample
     spec:
       containers:
-      - name: eureka-sample
-        image: runzexia/eureka-sample:latest
-        ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            memory: "1Gi"
-            cpu: "500m"
-          limits:
-            memory: "1200Mi"
-            cpu: "500m"
-        env:
-        - name: JAVA_OPTS
-          value: "-Xms1g -Xmx1g"
+        - name: eureka
+          image: runzexia/eureka-sample:latest
+          ports:
+            - containerPort: 8761
+          resources:
+            limits:
+              memory: 2Gi
+          env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: JAVA_OPTS
+              value: -XX:+UnlockExperimentalVMOptions
+                -XX:+UseCGroupMemoryLimitForHeap
+                -XX:MaxRAMFraction=2
+                -XX:CICompilerCount=8
+                -XX:ActiveProcessorCount=8
+                -XX:+UseG1GC
+                -XX:+AggressiveOpts
+                -XX:+UseFastAccessorMethods
+                -XX:+UseStringDeduplication
+                -XX:+UseCompressedOops
+                -XX:+OptimizeStringConcat
+            - name: EUREKA_SERVER
+              value: "http://eureka-0.eureka-sample:8761/eureka/,http://eureka-1.eureka-sample:8761/eureka/,http://eureka-2.eureka-sample:8761/eureka/"
+            - name: EUREKA_INSTANCE_HOSTNAME
+              value: ${MY_POD_NAME}.eureka-sample
         livenessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 8761
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 8761
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5

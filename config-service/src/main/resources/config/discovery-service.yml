@@ -1,11 +1,22 @@
 server:
-  port: 8080
+  port: ${PORT:8761}
 
 eureka:
-  instance:
-    hostname: localhost
+  server:
+    eviction-interval-timer-in-ms: 5000
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registry-fetch-interval-seconds: 30
+    fetch-registry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: ${EUREKA_SERVER:http://127.0.0.1:${server.port}/eureka/}
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 15
+    instance-id: ${EUREKA_INSTANCE_HOSTNAME:${spring.application.name}}:${server.port}@${random.long(1000000,9999999)}
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:${spring.application.name}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

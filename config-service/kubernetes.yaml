@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-sample
+  namespace: kubesphere-springcloud-sample
+  labels:
+    app: config-sample
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      name: config-sample
+  selector:
+    app: config-sample
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: config-sample
+  name: config-sample
+  namespace: kubesphere-springcloud-sample
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-sample
+  template:
+    metadata:
+      labels:
+        app: config-sample
+    spec:
+      containers:
+        - image: runzexia/config-sample:latest
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            timeoutSeconds: 10
+            failureThreshold: 30
+            periodSeconds: 5
+          imagePullPolicy: Always
+          name: config-sample
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 300m
+              memory: 600Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
