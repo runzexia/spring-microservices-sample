@@ -26,10 +26,12 @@ spec:
   selector:
     matchLabels:
       app: department-sample
+      version: master-$BUILD_NUMBER
   template:
     metadata:
       labels:
         app: department-sample
+        version: master-$BUILD_NUMBER
     spec:
       initContainers:
         - name: wait-config

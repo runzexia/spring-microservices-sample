@@ -26,10 +26,12 @@ spec:
   selector:
     matchLabels:
       app: config-sample
+      version: master-$BUILD_NUMBER
   template:
     metadata:
       labels:
         app: config-sample
+        version: master-$BUILD_NUMBER
     spec:
       containers:
         - image: runzexia/config-sample:latest
