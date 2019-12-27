@@ -31,6 +31,23 @@ spec:
       labels:
         app: organization-sample
     spec:
+      initContainers:
+        - name: wait-config
+          image: 'busybox:1.28.4'
+          command:
+            - sh
+            - '-c'
+            - >-
+              until nc -z config-sample 8080; do echo "waiting for
+                            config"; sleep 2; done;
+        - name: wait-eureka
+          image: 'busybox:1.28.4'
+          command:
+            - sh
+            - '-c'
+            - >-
+              until nc -z eureka-sample 8761; do echo "waiting for
+                            eureka"; sleep 2; done;
       containers:
         - image: runzexia/organization-sample:latest
           readinessProbe:

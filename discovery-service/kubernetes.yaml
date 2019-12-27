@@ -31,6 +31,15 @@ spec:
       labels:
         app: eureka-sample
     spec:
+      initContainers:
+        - name: wait-config
+          image: 'busybox:1.28.4'
+          command:
+            - sh
+            - '-c'
+            - >-
+              until nc -z config-sample 8080; do echo "waiting for
+                            eureka-sample"; sleep 2; done;
       containers:
         - name: eureka
           image: runzexia/eureka-sample:latest
