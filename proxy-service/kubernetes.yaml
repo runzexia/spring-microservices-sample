@@ -47,7 +47,7 @@ spec:
             - '-c'
             - >-
               until nc -z eureka-sample 8761; do echo "waiting for
-                            eureka"; sleep 2; done; 
+                            eureka"; sleep 2; done;
       containers:
         - image: runzexia/proxy-sample:latest
           readinessProbe:

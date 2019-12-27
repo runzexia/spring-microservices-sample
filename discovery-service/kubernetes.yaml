@@ -39,7 +39,7 @@ spec:
             - '-c'
             - >-
               until nc -z config-sample 8080; do echo "waiting for
-                            eureka-sample"; sleep 2; done;
+                            config"; sleep 2; done;
       containers:
         - name: eureka
           image: runzexia/eureka-sample:latest
@@ -75,13 +75,13 @@ spec:
             httpGet:
               path: /actuator/health
               port: 8761
-            initialDelaySeconds: 180
+            initialDelaySeconds: 360
             periodSeconds: 10
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /actuator/health
               port: 8761
-            initialDelaySeconds: 180
+            initialDelaySeconds: 360
             periodSeconds: 10
             timeoutSeconds: 5
