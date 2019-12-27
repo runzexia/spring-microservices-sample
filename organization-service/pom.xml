@@ -6,7 +6,7 @@
 		<version>2.2.2.RELEASE</version>
 	</parent>
 	<artifactId>organization-service</artifactId>
-	<groupId>pl.piomin.services</groupId>
+	<groupId>io.kubesphere.services</groupId>
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
