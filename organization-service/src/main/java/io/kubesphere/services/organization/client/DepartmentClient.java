@@ -2,7 +2,7 @@ package io.kubesphere.services.organization.client;
 
 import java.util.List;
 
-import io.kubesphere.services.organization.model.Department;
+import io.kubesphere.services.Department;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

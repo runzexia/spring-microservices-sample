@@ -1,11 +1,11 @@
 package io.kubesphere.services.department.repository;
 
+import io.kubesphere.services.Department;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import io.kubesphere.services.department.model.Department;
 
 public class DepartmentRepository {
 

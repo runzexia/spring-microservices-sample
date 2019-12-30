@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import io.kubesphere.services.employee.model.Employee;
+import io.kubesphere.services.Employee;
 
 public class EmployeeRepository {
 

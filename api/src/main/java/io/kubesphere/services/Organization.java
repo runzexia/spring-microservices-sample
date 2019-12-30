@@ -1,9 +1,10 @@
-package io.kubesphere.services.organization.model;
+package io.kubesphere.services;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Organization {
+public class Organization implements Serializable {
 
 	private Long id;
 	private String name;

@@ -1,6 +1,6 @@
 package io.kubesphere.services.employee;
 
-import io.kubesphere.services.employee.model.Employee;
+import io.kubesphere.services.Employee;
 import io.kubesphere.services.employee.repository.EmployeeRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

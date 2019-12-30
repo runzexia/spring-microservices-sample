@@ -1,6 +1,9 @@
-package io.kubesphere.services.employee.model;
+package io.kubesphere.services;
 
-public class Employee {
+import java.io.Serializable;
+
+
+public class Employee implements Serializable{
 
 	private Long id;
 	private Long organizationId;
@@ -12,7 +15,7 @@ public class Employee {
 	public Employee() {
 
 	}
-	
+
 	public Employee(Long organizationId, Long departmentId, String name, int age, String position) {
 		this.organizationId = organizationId;
 		this.departmentId = departmentId;

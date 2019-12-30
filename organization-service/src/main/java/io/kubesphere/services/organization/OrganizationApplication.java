@@ -1,12 +1,12 @@
 package io.kubesphere.services.organization;
 
+import io.kubesphere.services.Organization;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
-import io.kubesphere.services.organization.model.Organization;
 import io.kubesphere.services.organization.repository.OrganizationRepository;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

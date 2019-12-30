@@ -1,10 +1,11 @@
 package io.kubesphere.services.organization.repository;
 
+import io.kubesphere.services.Organization;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import io.kubesphere.services.organization.model.Organization;
 
 public class OrganizationRepository {
 

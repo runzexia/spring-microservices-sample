@@ -2,7 +2,7 @@ package io.kubesphere.services.employee.controller;
 
 import java.util.List;
 
-import io.kubesphere.services.employee.model.Employee;
+import io.kubesphere.services.Employee;
 import io.kubesphere.services.employee.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

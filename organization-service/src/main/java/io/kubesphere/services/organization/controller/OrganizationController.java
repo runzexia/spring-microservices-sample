@@ -2,8 +2,8 @@ package io.kubesphere.services.organization.controller;
 
 import java.util.List;
 
+import io.kubesphere.services.Organization;
 import io.kubesphere.services.organization.client.EmployeeClient;
-import io.kubesphere.services.organization.model.Organization;
 import io.kubesphere.services.organization.repository.OrganizationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,6 +2,7 @@ package io.kubesphere.services.department.controller;
 
 import java.util.List;
 
+import io.kubesphere.services.Department;
 import io.kubesphere.services.department.repository.DepartmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.kubesphere.services.department.client.EmployeeClient;
-import io.kubesphere.services.department.model.Department;
 
 @RestController
 public class DepartmentController {
