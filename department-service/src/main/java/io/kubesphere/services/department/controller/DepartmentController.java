@@ -3,7 +3,9 @@ package io.kubesphere.services.department.controller;
 import java.util.List;
 
 import io.kubesphere.services.Department;
+import io.kubesphere.services.EmployeeService;
 import io.kubesphere.services.department.repository.DepartmentRepository;
+import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class DepartmentController {
     DepartmentRepository repository;
 	@Autowired
 	EmployeeClient employeeClient;
+
+	@Reference(version = "1.0.0" , protocol = "dubbo")
+	EmployeeService employeeService;
 	
 	@PostMapping("/")
 	public Department add(@RequestBody Department department) {
@@ -53,7 +58,7 @@ public class DepartmentController {
 	public List<Department> findByOrganizationWithEmployees(@PathVariable("organizationId") Long organizationId) {
 		LOGGER.info("Department find: organizationId={}", organizationId);
 		List<Department> departments = repository.findByOrganization(organizationId);
-		departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));
+		departments.forEach(d -> d.setEmployees(employeeService.findByDepartment(d.getId())));
 		return departments;
 	}
 	

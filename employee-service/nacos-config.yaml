@@ -8,3 +8,16 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+dubbo:
+  scan:
+    base-packages: io.kubesphere.services.employee
+  protocols:
+    dubbo:
+      name: dubbo
+    rest:
+      name: rest
+      port: ${PORT:8090}
+      server: tomcat
+  registry:
+    #   The Spring Cloud Dubbo's registry extension
+    address: spring-cloud://localhost
