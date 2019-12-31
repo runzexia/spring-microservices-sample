@@ -14,10 +14,6 @@ dubbo:
   protocols:
     dubbo:
       name: dubbo
-    rest:
-      name: rest
-      port: ${PORT:8090}
-      server: tomcat
   registry:
     #   The Spring Cloud Dubbo's registry extension
     address: spring-cloud://localhost

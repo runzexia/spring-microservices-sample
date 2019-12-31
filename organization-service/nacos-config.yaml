@@ -8,3 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+
+dubbo:
+  registry:
+    #   The Spring Cloud Dubbo's registry extension
+    address: spring-cloud://localhost

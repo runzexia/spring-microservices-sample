@@ -9,6 +9,7 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,11 +26,12 @@ public class DepartmentController {
 	@Autowired
     DepartmentRepository repository;
 	@Autowired
+	@Lazy
 	EmployeeClient employeeClient;
 
 	@Reference(version = "1.0.0" , protocol = "dubbo")
 	EmployeeService employeeService;
-	
+
 	@PostMapping("/")
 	public Department add(@RequestBody Department department) {
 		LOGGER.info("Department add: {}", department);
