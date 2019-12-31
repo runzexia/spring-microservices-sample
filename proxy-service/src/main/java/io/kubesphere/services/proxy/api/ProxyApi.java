@@ -1,4 +1,4 @@
-package io.kubesphere.service.proxy.api;
+package io.kubesphere.services.proxy.api;
 
 import java.util.ArrayList;
 import java.util.List;
