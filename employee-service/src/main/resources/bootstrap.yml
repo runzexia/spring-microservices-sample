@@ -3,6 +3,17 @@ spring:
     name: employee-service
   cloud:
     nacos:
-      config:
+      discovery:
         server-addr: localhost:8848
-        file-extension: yaml
+server:
+  port: ${PORT:8090}
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+dubbo:
+  scan:
+    base-packages: io.kubesphere.services.employee
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
