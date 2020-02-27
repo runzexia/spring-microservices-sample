@@ -1,9 +1,8 @@
 
 pipeline {
-  agent {
-    any
-  }
-
+  
+  
+    agent any
     environment {
         DOCKER_CREDENTIAL_ID = 'dockerhub-id'
         KUBECONFIG_CREDENTIAL_ID = 'kubeconfig'
