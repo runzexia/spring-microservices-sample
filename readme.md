@@ -11,7 +11,7 @@ Currently you may find here some examples of microservices implementation using 
 5. Using [Trampoline](http://ernestort.github.io/Trampoline/) for managing group of Spring Boot microservices locally. The example is available in the branch [trampoline](https://github.com/piomin/sample-spring-microservices-new/tree/trampoline). A detailed guide may be find in the following article: [Managing Spring Boot apps locally with Trampoline](https://piotrminkowski.com/2018/06/08/managing-spring-boot-apps-locally-with-trampoline/)
 
 ### Usage
-
+ 
 In the most cases you need to have Maven and JDK8+. In the fourth example with OpenShift you will have to run **Minishift** on your machine. The best way to run the sample applications is with IDEs like IntelliJ IDEA or Eclipse.  
 
 ## Architecture
